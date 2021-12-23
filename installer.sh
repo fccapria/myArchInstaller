@@ -8,13 +8,10 @@ echo -n "Insert video drivers: (intel, amd, intel+amd, nvidia, intel+nvidia, amd
 read videod
 echo -n "Insert username:"
 read username
+echo -n "Insert timezone (ex. Europe/Rome):"
+read timezone
 
-#$1 == hostname
-#$2 == desktop options
-#$3 == video drivers
-#$4 == username
-
-timedatectl set-timezone Europe/Rome
+timedatectl set-timezone $timezone
 hwclock --systohc
 sed -i '297s/.//' /etc/locale.gen
 locale-gen
