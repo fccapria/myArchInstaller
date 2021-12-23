@@ -99,4 +99,4 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager.service
 
-echo -n "Now you need only to create a root password (passwd), a user passwd (passwd username) and to edit (if you want) the /etc/sudoers file to give wheel permission."
+echo -n "Now you need only to create a root password (passwd), a user password (passwd username) and to edit (if you want) the /etc/sudoers file to give wheel permission."
