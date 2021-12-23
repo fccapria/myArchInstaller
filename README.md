@@ -1,10 +1,12 @@
-# myArchInstaller
+# myArchInstaller ![myArchInstaller](https://user-images.githubusercontent.com/62179193/147276616-ebf95366-d9d3-4d05-8721-8665dc5a4687.png)
+
 
 **EN**
 ------
 What is this?
 Basically it is a very simple script that allows a "guided" installation of Arch after running the pacstrap and installing git. 
 Currently available features:
+
 1. Hostname
 2. DE/WM
    * Fresh Xorg
