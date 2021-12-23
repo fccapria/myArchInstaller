@@ -2,14 +2,16 @@
 
 echo -n "Insert hostname:"
 read hostname
-echo -n "Insert desktop options: (xorg, i3, gnome, kde available, empty for tty selection):"
+echo -n "Insert desktop options (xorg, i3, gnome, kde available, empty for tty selection):"
 read desktop
-echo -n "Insert video drivers: (intel, amd, intel+amd, nvidia, intel+nvidia, amd+nvidia available, empty for no drivers):"
+echo -n "Insert video drivers (intel, amd, intel+amd, nvidia, intel+nvidia, amd+nvidia available, empty for no drivers):"
 read videod
 echo -n "Insert username:"
 read username
 echo -n "Insert timezone (ex. Europe/Rome):"
 read timezone
+echo -n "Insert audio preferences (pulseaudio and pipewire available, empty for no audio):"
+read audio
 
 timedatectl set-timezone $timezone
 hwclock --systohc
@@ -25,7 +27,7 @@ echo "127.0.1.1	arch" >> /etc/hosts
 
 
 
-pacman -S --noconfirm net-tools wireless_tools dialog wpa_supplicant networkmanager alsa-utils pulseaudio xf86-input-synaptics grub efibootmgr
+pacman -S --noconfirm net-tools wireless_tools dialog wpa_supplicant networkmanager xf86-input-synaptics grub efibootmgr
 
 case $desktop in
     xorg)
@@ -42,6 +44,18 @@ case $desktop in
 	;;
     *)
 	echo -n "no desktop option selected."
+	;;
+esac
+
+case $audio in
+    pulseaudio)
+	pacman -S --noconfirm alsa-utils pulseaudio pavucontrol
+	;;
+    pipewire)
+	pacman -S --noconfirm alsa-utils pipewire pipewire-alsa pipewire-pulse pavucontrol
+	;;
+    *)
+	echo -n "no audio preferences selected."
 	;;
 esac
 
@@ -68,6 +82,8 @@ case $videod in
 	echo -n "no driver selected."
 	;;
 esac
+
+
 
 useradd -mG wheel -s /bin/bash $username
 
