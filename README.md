@@ -7,7 +7,7 @@ Basically it is a very simple script that allows a "guided" installation of Arch
 Currently available features:
 1. Hostname
 2. DE/WM
--Fresh Xorg
+*Fresh Xorg
   -i3-gaps
   *BSPWM
   *Gnome
