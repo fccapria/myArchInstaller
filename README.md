@@ -33,5 +33,4 @@ How to use it
  ./installer.sh
  `
 # ALERT
-#
-The script was created for a fresh "Italian locales" installation. If you want to change the locale edit the installer ;)
+# The script was created for a fresh "Italian locales" installation. If you want to change the locale edit the installer ;)
