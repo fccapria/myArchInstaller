@@ -28,8 +28,11 @@ How to use it
 -------------
 
 <code>git clone https://github.com/fccapria/myArchInstaller.git
+  
   cd myArchInstaller
+  
   chmod +x installer.sh
+  
   ./installer.sh
 </code>.</p>
 
