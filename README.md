@@ -27,10 +27,10 @@ Currently available features:
 How to use it
 -------------
 
-`git clone https://github.com/fccapria/myArchInstaller.git`
-`cd myArchInstaller`
-`chmod +x installer.sh`
-`./installer.sh`
+<code>git clone https://github.com/fccapria/myArchInstaller.git
+cd myArchInstaller
+chmod +x installer.sh
+./installer.sh</code>.</p>
 
 # ALERT
 The script was created for a fresh "Italian locales" installation. If you want to change the locale edit the installer ;)
