@@ -2,7 +2,7 @@
 
 echo -n "Insert hostname:"
 read hostname
-echo -n "Insert desktop options (xorg, i3, gnome, kde available, empty for tty selection):"
+echo -n "Insert desktop options (xorg, i3, bspwm, gnome, kde, kde+apps available; empty for tty selection):"
 read desktop
 echo -n "Insert video drivers (intel, amd, intel+amd, nvidia, intel+nvidia, amd+nvidia available, empty for no drivers):"
 read videod
@@ -41,6 +41,12 @@ case $desktop in
 	;;
     kde)
 	pacman -S --noconfirm xorg xorg-xinit plasma dolphin sddm
+	;;
+    kde+apps)
+	pacman -S --noconfirm xorg xorg-xinit plasma kde-applications sddm
+	;;
+    bspwm)
+	pacman -S --noconfirm xorg xorg-xinit bspwm
 	;;
     *)
 	echo -n "no desktop option selected."
