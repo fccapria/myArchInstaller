@@ -1,5 +1,19 @@
 #!/bin/bash
 
+echo -n "Insert hostname:"
+read hostname
+echo -n "Insert desktop options: (xorg, i3, gnome, kde available, empty for tty selection):"
+read desktop
+echo -n "Insert video drivers: (intel, amd, intel+amd, nvidia, intel+nvidia, amd+nvidia available, empty for no drivers):"
+read videod
+echo -n "Insert username:"
+read username
+
+#$1 == hostname
+#$2 == desktop options
+#$3 == video drivers
+#$4 == username
+
 timedatectl set-timezone Europe/Rome
 hwclock --systohc
 sed -i '297s/.//' /etc/locale.gen
@@ -7,12 +21,58 @@ locale-gen
 echo "LANG=it_IT.UTF-8" > /etc/locale.conf
 export "LANG=it_IT.UTF-8"
 echo "KEYMAP=it" >> /etc/vconsole.conf
-echo "arch" > /etc/hostname
+echo "$hostname" > /etc/hostname
 echo "127.0.0.1	localhost" >> /etc/hosts
 echo "::1	localhost" >> /etc/hosts
 echo "127.0.1.1	arch" >> /etc/hosts
 
-pacman -S --noconfirm net-tools wireless_tools dialog wpa_supplicant networkmanager alsa-utils pulseaudio xf86-video-intel xf86-video-amdgpu xf86-input-synaptics grub efibootmgr xorg xorg-xinit
+
+
+pacman -S --noconfirm net-tools wireless_tools dialog wpa_supplicant networkmanager alsa-utils pulseaudio xf86-input-synaptics grub efibootmgr
+
+case $desktop in
+    xorg)
+	pacman -S --noconfirm xorg xorg-xinit
+	;;
+    i3)
+	pacman -S --noconfirm xorg xorg-xinit i3-gaps i3status
+	;;
+    gnome)
+	pacman -S --noconfirm xorg xorg-xinit gnome gnome-shell gdm
+	;;
+    kde)
+	pacman -S --noconfirm xorg xorg-xinit plasma dolphin sddm
+	;;
+    *)
+	echo -n "no desktop option selected."
+	;;
+esac
+
+case $videod in
+    intel)
+	pacman -S --noconfirm xf86-video-intel
+	;;
+    amd)
+	pacman -S --noconfirm xf86-video-amdgpu
+	;;
+    intel+amd)
+	pacman -S --noconfirm xf86-video-intel xf86-video-amdgpu
+	;;
+    nvidia)
+	pacman -S --noconfirm nvidia
+	;;
+    intel+nvidia)
+	pacman -S --noconfirm xf86-video-intel nvidia
+	;;
+    amd+nvidia)
+	pacman -S --noconfirm xf86-video-amdgpu nvidia
+	;;
+    *)
+	echo -n "no driver selected."
+	;;
+esac
+
+useradd -mG wheel -s /bin/bash $username
 
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -20,4 +80,4 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager.service
 
-echo "Manca solamente il cambio passworde dell'utente root (passwd), la creazione dell'utente (useradd -mG wheel -s /bin/bash nomeutente), la sua password e la variazione del gruppo wheel (/etc/sudoers)"
+echo -n "Now you need only to create a root password (passwd), a user passwd (passwd username) and to edit (if you want) the /etc/sudoers file to give wheel permission."

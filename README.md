@@ -1,3 +1,5 @@
 # myArchInstaller
 
-Per rendere eseguibile l'installer usare il comando chmod +x installer.sh
+To launch the installer make it executable with chmod +x installer.sh
+
+--Added some options.
