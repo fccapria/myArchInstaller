@@ -28,9 +28,10 @@ How to use it
 -------------
 
 <code>git clone https://github.com/fccapria/myArchInstaller.git
-cd myArchInstaller
-chmod +x installer.sh
-./installer.sh</code>.</p>
+  cd myArchInstaller
+  chmod +x installer.sh
+  ./installer.sh
+</code>.</p>
 
 # ALERT
 The script was created for a fresh "Italian locales" installation. If you want to change the locale edit the installer ;)
