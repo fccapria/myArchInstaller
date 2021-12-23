@@ -8,21 +8,21 @@ Currently available features:
 1. Hostname
 2. DE/WM
    * Fresh Xorg
-  -i3-gaps
-  *BSPWM
-  *Gnome
-  *KDE
-  *KDE with applications
+   * i3-gaps
+   * BSPWM
+   * Gnome
+   * KDE
+   * KDE with applications
 3. Video drivers
-  *Intel
-  *AMD
-  *Nvidia
-  *Hybrids (Intel+AMD - Intel+Nvidia - AMD+Nvidia)
+   * Intel
+   * AMD
+   * Nvidia
+   * Hybrids (Intel+AMD - Intel+Nvidia - AMD+Nvidia)
 4. Username
 5. Timezone
 6. Audio
-  *Pulseaudio
-  *Pipewire
+   * Pulseaudio
+   * Pipewire
   
 How to use it
 -------------
