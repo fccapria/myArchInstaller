@@ -43,31 +43,6 @@ case $audio in
 esac
 
 
-case $desktop in
-    xorg)
-	pacman -S --noconfirm xorg xorg-xinit
-	;;
-    i3)
-	pacman -S --noconfirm xorg xorg-xinit i3-gaps i3status
-	;;
-    gnome)
-	pacman -S --noconfirm xorg xorg-xinit gnome gnome-shell gdm
-	;;
-    kde)
-	pacman -S --noconfirm xorg xorg-xinit plasma dolphin sddm
-	;;
-    kde+apps)
-	pacman -S --noconfirm xorg xorg-xinit plasma kde-applications sddm
-	;;
-    bspwm)
-	pacman -S --noconfirm xorg xorg-xinit bspwm
-	;;
-    *)
-	echo -n "no desktop option selected."
-	;;
-esac
-
-
 case $videod in
     intel)
 	pacman -S --noconfirm xf86-video-intel
@@ -89,6 +64,31 @@ case $videod in
 	;;
     *)
 	echo -n "no driver selected."
+	;;
+esac
+
+
+case $desktop in
+    xorg)
+	pacman -S --noconfirm xorg xorg-xinit
+	;;
+    i3)
+	pacman -S --noconfirm xorg xorg-xinit i3-gaps i3status
+	;;
+    gnome)
+	pacman -S --noconfirm xorg xorg-xinit gnome gnome-shell gdm
+	;;
+    kde)
+	pacman -S --noconfirm xorg xorg-xinit plasma dolphin sddm
+	;;
+    kde+apps)
+	pacman -S --noconfirm xorg xorg-xinit plasma kde-applications sddm
+	;;
+    bspwm)
+	pacman -S --noconfirm xorg xorg-xinit bspwm
+	;;
+    *)
+	echo -n "no desktop option selected."
 	;;
 esac
 
