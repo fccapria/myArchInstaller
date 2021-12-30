@@ -29,6 +29,20 @@ echo "127.0.1.1	arch" >> /etc/hosts
 
 pacman -S --noconfirm net-tools wireless_tools dialog wpa_supplicant networkmanager xf86-input-synaptics grub efibootmgr
 
+
+case $audio in
+    pulseaudio)
+	pacman -S --noconfirm alsa-utils pulseaudio pavucontrol
+	;;
+    pipewire)
+	pacman -S --noconfirm alsa-utils pipewire pipewire-alsa pipewire-pulse pavucontrol
+	;;
+    *)
+	echo -n "no audio preferences selected."
+	;;
+esac
+
+
 case $desktop in
     xorg)
 	pacman -S --noconfirm xorg xorg-xinit
@@ -53,17 +67,6 @@ case $desktop in
 	;;
 esac
 
-case $audio in
-    pulseaudio)
-	pacman -S --noconfirm alsa-utils pulseaudio pavucontrol
-	;;
-    pipewire)
-	pacman -S --noconfirm alsa-utils pipewire pipewire-alsa pipewire-pulse pavucontrol
-	;;
-    *)
-	echo -n "no audio preferences selected."
-	;;
-esac
 
 case $videod in
     intel)
@@ -88,7 +91,6 @@ case $videod in
 	echo -n "no driver selected."
 	;;
 esac
-
 
 
 useradd -mG wheel -s /bin/bash $username
